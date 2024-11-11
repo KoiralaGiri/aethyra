@@ -10,6 +10,7 @@
     }
   },
   "dependencies": {
+    "@lordicon/react": "^1.10.1",
     "@mojs/core": "^1.7.1",
     "@radix-ui/react-hover-card": "^1.1.2",
     "@radix-ui/react-label": "^2.1.0",
@@ -50,6 +51,7 @@
     "react-scripts": "^5.0.1",
     "react-scroll-parallax": "^3.4.5",
     "react-spring": "^9.7.4",
+    "rellax": "^1.12.1",
     "shadcn-ui": "^0.2.3",
     "simplex-noise": "^4.0.3",
     "tailwind-merge": "^2.5.4",

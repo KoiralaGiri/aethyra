@@ -1,10 +1,104 @@
 import React, { useState, useRef, useLayoutEffect } from 'react';
 import { motion, AnimatePresence, useSpring } from 'framer-motion';
+import { Player } from '@lordicon/react';
 import { ChevronRight, User, Briefcase, Code, Clock, Phone, UserCircle2 } from 'lucide-react';
 import { Button } from './ui/Button';
 import AnimatedLogo from './AnimatedLogo';
 import './MegaMenuNavbar.css';
 
+const AnimatedMenuItem = ({ title, description, iconData }) => {
+  const [isHovered, setIsHovered] = useState(false);
+  const playerRef = useRef(null);
+  
+  const handleMouseEnter = () => {
+    setIsHovered(true);
+    playerRef.current?.playFromBeginning();
+  };
+
+  const handleMouseLeave = () => {
+    setIsHovered(false);
+    playerRef.current?.goToFirstFrame();
+  };
+
+  const fileVariants = {
+    initial: {
+      rotate: -15,
+      x: -10,
+      opacity: 0.5,
+    },
+    hover: {
+      rotate: 15,
+      x: 10,
+      opacity: 0.8,
+      transition: {
+        type: "spring",
+        stiffness: 300,
+        damping: 20
+      }
+    }
+  };
+
+  return (
+    <motion.div
+      className="relative flex items-center p-4 rounded-lg bg-white/5 hover:bg-white/10 transition-colors cursor-pointer"
+      onMouseEnter={handleMouseEnter}
+      onMouseLeave={handleMouseLeave}
+      whileHover={{ scale: 1.02 }}
+    >
+      <div className="relative w-12 h-12">
+        <motion.div
+          className="absolute inset-0 w-10 h-10 bg-white/10 rounded"
+          variants={fileVariants}
+          initial="initial"
+          animate={isHovered ? "hover" : "initial"}
+        />
+        
+        <motion.div 
+          className="absolute inset-0 w-10 h-10 bg-white rounded shadow-lg"
+          initial={{ rotate: 0 }}
+          animate={{ rotate: isHovered ? 5 : 0 }}
+          transition={{
+            type: "spring",
+            stiffness: 300,
+            damping: 20
+          }}
+        >
+          <Player
+            ref={playerRef}
+            size={40}
+            icon={iconData}
+            colorize="#1d4ed8"
+          />
+        </motion.div>
+      </div>
+      
+      <div className="ml-4 flex-1">
+        <h3 className="text-lg font-semibold text-white">{title}</h3>
+        <p className="text-sm text-gray-300">{description}</p>
+      </div>
+
+      <motion.div
+        initial={{ x: 0, opacity: 0 }}
+        animate={{ x: isHovered ? 10 : 0, opacity: isHovered ? 1 : 0 }}
+        className="ml-2"
+      >
+        <svg 
+          className="w-5 h-5 text-blue-400" 
+          fill="none" 
+          viewBox="0 0 24 24" 
+          stroke="currentColor"
+        >
+          <path 
+            strokeLinecap="round" 
+            strokeLinejoin="round" 
+            strokeWidth={2} 
+            d="M9 5l7 7-7 7" 
+          />
+        </svg>
+      </motion.div>
+    </motion.div>
+  );
+};
 
 const LoginButton = () => {
   return (
@@ -108,7 +202,7 @@ const MegaMenuNavbar = () => {
 
   const megaMenuContent = {
     about: [
-      { title: 'Our Story', description: 'Learn more about our journey', imgPlaceholder: '/api/placeholder/60/40' },
+      { title: 'Our Story', description: 'Learn more about our journey', imgPlaceholder: 'src/ani-icons/OurStoryAnimatedIcon.json' },
       { title: 'Mission', description: 'Our mission and values', imgPlaceholder: '/api/placeholder/60/40' },
       { title: 'Team', description: 'Meet our experts', imgPlaceholder: '/api/placeholder/60/40' },
     ],

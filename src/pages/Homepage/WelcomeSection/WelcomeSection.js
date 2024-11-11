@@ -2,7 +2,6 @@ import React, { useState, useEffect, useRef } from 'react';
 import Typewriter from 'typewriter-effect';
 import styled from 'styled-components';
 import { WordPullUp } from './WordPullUp';
-import gsap from 'gsap';
 import { motion, AnimatePresence } from 'framer-motion';
 import 'src/vendors/vanta.globe.min.js';
 
@@ -14,38 +13,45 @@ const WelcomeSection = () => {
   const [globeVisible, setGlobeVisible] = useState(false);
   const [backgroundBlur, setBackgroundBlur] = useState(0);
   const [backgroundOpacity, setBackgroundOpacity] = useState(0);
+  const [viewportHeight, setViewportHeight] = useState(0);
+  const [viewportWidth, setViewportWidth] = useState(0);
   const globeRef = useRef(null);
-  const descriptionRef = useRef(null);
+  const sectionRef = useRef(null);
+
+  useEffect(() => {
+    const updateViewportDimensions = () => {
+      setViewportHeight(window.innerHeight);
+      setViewportWidth(window.innerWidth);
+    };
+
+    updateViewportDimensions();
+    window.addEventListener('resize', updateViewportDimensions);
+    return () => window.removeEventListener('resize', updateViewportDimensions);
+  }, []);
 
   useEffect(() => {
     const sequence = async () => {
-      // Start with black screen
       await new Promise(resolve => setTimeout(resolve, 300));
-      
-      // Start globe scale animation
       setGlobeVisible(true);
-      
-      // Start background blur transition
+
       const blurSteps = 20;
       for (let i = 0; i <= blurSteps; i++) {
         await new Promise(resolve => setTimeout(resolve, 30));
         setBackgroundBlur(i / blurSteps);
       }
-      
-      // Fade in background
+
       const opacitySteps = 20;
       for (let i = 0; i <= opacitySteps; i++) {
         await new Promise(resolve => setTimeout(resolve, 30));
         setBackgroundOpacity(i / opacitySteps);
       }
 
-      // Original text animation sequence
       await new Promise(resolve => setTimeout(resolve, 300));
       setShowDevelopment(true);
-      
+
       await new Promise(resolve => setTimeout(resolve, 1500));
       setShowWelcome(true);
-      
+
       await new Promise(resolve => setTimeout(resolve, 300));
       setShowDescription(true);
     };
@@ -55,25 +61,31 @@ const WelcomeSection = () => {
 
   useEffect(() => {
     const handleScroll = () => {
-      const windowHeight = window.innerHeight;
       const scrollY = window.scrollY;
-      const progress = Math.min(scrollY / windowHeight, 1);
+      const windowHeight = window.innerHeight;
+      
+      const progress = Math.min(scrollY / (windowHeight * 0.5), 1);
       setScrollProgress(progress);
+      
+      const globeOpacity = Math.max(0, 1 - (scrollY / (windowHeight * 0.3)));
+      if (globeRef.current) {
+        globeRef.current.style.opacity = globeOpacity;
+      }
     };
-
+  
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
   useEffect(() => {
-    if (globeVisible && globeRef.current) {
+    if (globeVisible && globeRef.current && viewportHeight > 0) {
       const globeEffect = window.VANTA.GLOBE({
         el: "#globe-background",
         mouseControls: true,
         touchControls: true,
         gyroControls: false,
-        minHeight: 200.00,
-        minWidth: 200.00,
+        minHeight: viewportHeight,
+        minWidth: viewportWidth,
         color: 0xff6f61,
         color2: 0xffffff,
         size: 1.2,
@@ -89,13 +101,10 @@ const WelcomeSection = () => {
         if (globeEffect) globeEffect.destroy();
       };
     }
-  }, [globeVisible]);
+  }, [globeVisible, viewportHeight, viewportWidth]);
 
   const containerVariants = {
-    hidden: { 
-      opacity: 0,
-      y: 40
-    },
+    hidden: { opacity: 0, y: 40 },
     visible: { 
       opacity: 1,
       y: 0,
@@ -107,10 +116,7 @@ const WelcomeSection = () => {
   };
 
   const descriptionVariants = {
-    hidden: { 
-      y: 20,
-      opacity: 0
-    },
+    hidden: { y: 20, opacity: 0 },
     visible: { 
       y: 0,
       opacity: 1,
@@ -123,10 +129,7 @@ const WelcomeSection = () => {
   };
 
   const wordVariants = {
-    hidden: { 
-      y: 40,
-      opacity: 0
-    },
+    hidden: { y: 40, opacity: 0 },
     visible: { 
       y: 0,
       opacity: 1,
@@ -147,37 +150,10 @@ const WelcomeSection = () => {
   ];
 
   return (
-    <SectionWrapper>
-      {/* Background blur and fade container */}
-      <motion.div 
-        className="fixed inset-0 bg-black"
+    <SectionWrapper ref={sectionRef}>
+      <GlobeBackgroundContainer
         style={{
-          backdropFilter: `blur(${backgroundBlur * 20}px)`,
-          WebkitBackdropFilter: `blur(${backgroundBlur * 20}px)`,
-          opacity: backgroundOpacity,
-          transition: 'backdrop-filter 0.5s ease-out, opacity 0.5s ease-out'
-        }}
-      />
-
-      {/* Globe container */}
-      <motion.div
-        initial={{ scale: 0 }}
-        animate={{ 
-          scale: globeVisible ? 1 : 0
-        }}
-        transition={{ 
-          type: "spring",
-          stiffness: 80,
-          damping: 20,
-          duration: 1.2
-        }}
-        className="relative"
-        style={{
-          position: 'fixed',
-          top: 0,
-          left: 0,
-          width: '100%',
-          height: '100vh'
+          transform: `translateY(${Math.min(0, -scrollProgress * viewportHeight)}px)`
         }}
       >
         <GlobeBackground 
@@ -185,7 +161,7 @@ const WelcomeSection = () => {
           id="globe-background" 
           scrollProgress={scrollProgress}
         />
-      </motion.div>
+      </GlobeBackgroundContainer>
 
       <ContentWrapper>
         <CenteredContent>
@@ -333,26 +309,65 @@ const WelcomeSection = () => {
         </CenteredContent>
       </ContentWrapper>
 
-      <NextSection>
-        <div className="text-gray-800 text-center">
-          <h2 className="text-4xl font-bold mb-4">Next Section</h2>
-          <p className="text-xl">Your content goes here</p>
-        </div>
-      </NextSection>
+      <GradientFade />
     </SectionWrapper>
   );
 };
 
 const SectionWrapper = styled.div`
   position: relative;
-  background: black;
-  min-height: 100vh;
+  background: #1a1147;
+  min-height: 70vh;
+  overflow: hidden;
+  z-index: 1;
+`;
+
+const GlobeBackgroundContainer = styled.div`
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  will-change: transform;
+  z-index: 1;
+  
+  &::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 30vh;
+    background: linear-gradient(to bottom,
+      rgba(26, 17, 71, 0) 0%,
+      rgba(26, 17, 71, 0.8) 70%,
+      rgba(26, 17, 71, 1) 100%
+    );
+    pointer-events: none;
+  }
 `;
 
 const GlobeBackground = styled.div`
   width: 100%;
   height: 100%;
-  opacity: ${({ scrollProgress }) => Math.max(0, 1 - scrollProgress * 0.8)};
+  transition: opacity 0.3s ease-out;
+  background-color: #1a1147;
+  z-index: 1;
+`;
+
+const GradientFade = styled.div`
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 30vh;
+  background: linear-gradient(
+    to bottom,
+    rgba(26, 17, 71, 0) 0%,
+    rgba(26, 17, 71, 0.6) 30%,
+    rgba(26, 17, 71, 1) 100%
+  );
+  z-index: 3;
 `;
 
 const ContentWrapper = styled.div`
@@ -361,7 +376,7 @@ const ContentWrapper = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  z-index: 1;
+  z-index: 2;
 `;
 
 const CenteredContent = styled.div`
@@ -371,21 +386,6 @@ const CenteredContent = styled.div`
   max-width: 800px;
   height: 400px;
   overflow: visible;
-`;
-
-const WelcomeContainer = styled.div`
-  position: absolute;
-  top: 17%;
-  width: 100%;
-  min-height: 80px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  overflow: visible;
-
-  &:empty {
-    height: 80px;
-  }
 `;
 
 const DevelopmentContainer = styled.div`
@@ -398,10 +398,17 @@ const DevelopmentContainer = styled.div`
   align-items: center;
   justify-content: center;
   overflow: visible;
+`;
 
-  &:empty {
-    height: 80px;
-  }
+const WelcomeContainer = styled.div`
+  position: absolute;
+  top: 17%;
+  width: 100%;
+  min-height: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: visible;
 `;
 
 const DescriptionContainer = styled.div`
@@ -414,20 +421,6 @@ const DescriptionContainer = styled.div`
   align-items: center;
   justify-content: center;
   overflow: visible;
-
-  &:empty {
-    min-height: 80px;
-  }
-`;
-
-const NextSection = styled.div`
-  position: relative;
-  z-index: 10;
-  min-height: 100vh;
-  background-color: white;
-  display: flex;
-  align-items: center;
-  justify-content: center;
 `;
 
 export default WelcomeSection;
