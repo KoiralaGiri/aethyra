@@ -1,70 +1,82 @@
-# Getting Started with Create React App
+# Aethyra Website
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This project is the official website for Aethyra, featuring interactive elements, animations, and various custom components. Built with React, TailwindCSS, and other modern web technologies, the website provides a dynamic experience for users.
 
-## Available Scripts
+## Table of Contents
+- [Project Setup](#project-setup)
+- [Scripts](#scripts)
+- [Dependencies](#dependencies)
+- [DevDependencies](#devdependencies)
+- [Features](#features)
+- [File Structure](#file-structure)
+- [Configuration](#configuration)
+- [License](#license)
 
-In the project directory, you can run:
+## Project Setup
 
-### `npm start`
+To get started, clone this repository and install the necessary dependencies:
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+```bash
+git clone https://github.com/KoiralaGiri/aethyra-website.git
+cd aethyra-website
+npm install
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+Start Development Server: npm start
+Build for Production: npm run build
+Run Tests: npm test
+Eject Configuration (not recommended): npm run eject
 
-### `npm test`
+Dependencies
+The project relies on several libraries to create a dynamic, interactive experience:
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+React - Frontend library for building user interfaces.
+@mojs/core - Animation library for interactive elements.
+@radix-ui/react-hover-card - UI component library for hover effects.
+@react-spring/web - Spring physics-based animation library.
+@react-three/fiber & @react-three/drei - 3D graphics library and helpers.
+framer-motion - Library for creating complex animations and transitions.
+gsap - GreenSock Animation Platform for advanced animations.
+axios - HTTP client for API requests.
+tailwindcss - CSS framework for responsive and modern design.
+vanta - Animation library for creating interactive backgrounds.
+react-icons - Collection of icons for UI elements.
+animejs - Animation library for creating custom SVG and CSS animations.
+d3-shape & d3-interpolate - Libraries for creating and animating shapes.
+For a complete list of dependencies, see package.json.
 
-### `npm run build`
+DevDependencies
+These packages are used during the development process and not included in the production build:
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+@shadcn/ui - Additional UI components and styles.
+@types/three - Type definitions for three.js.
+autoprefixer - Adds vendor prefixes to CSS.
+postcss - A tool to transform CSS with JavaScript.
+tailwindcss - Utility-first CSS framework for rapid UI development.
+Features
+Logo Animation: An animated logo sequence created using custom animations and framer-motion.
+Background Effects: Uses the Vanta library to create an interactive globe background.
+Responsive Design: Utilizes TailwindCSS for responsive and accessible layouts.
+Custom Components: Several custom components like MegaMenuNavbar and WelcomeSection are included.
+Modular Structure: Organized in a modular structure for easier maintenance and scaling.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+File Structure
+aethyra-website/
+├── src/
+│   ├── animations/              # Animations used across the site
+│   ├── components/              # Reusable components like Navbar and Buttons
+│   ├── pages/                   # Page components like Homepage and About
+│   ├── styles/                  # CSS and Tailwind configurations
+│   ├── App.js                   # Main application entry point
+│   └── index.js                 # Entry file for React rendering
+├── tailwind.config.js           # TailwindCSS configuration file
+├── package.json                 # Project metadata and dependencies
+└── README.md     
+               # Project documentation
+Configuration
+The TailwindCSS configuration (tailwind.config.js) is set to support dark mode and includes custom colors, animations, and container configurations. Key customizations include:
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+Dark Mode: Enabled with the "class" strategy.
+Custom Colors: Additional colors defined for UI consistency.
+Animations: Custom animations for accordion and scrolling effects.
+License
+This project is licensed under the MIT License.
