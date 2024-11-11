@@ -1,0 +1,332 @@
+/* Font Imports */
+@font-face {
+    font-family: 'HK Grotesk';
+    src: url('/src/assets/fonts/hk-grotesk/HKGrotesk-Regular.otf') format('opentype');
+    font-weight: normal;
+    font-style: normal;
+  }
+  
+  @font-face {
+    font-family: 'HK Grotesk';
+    src: url('/src/assets/fonts/hk-grotesk/HKGrotesk-Bold.otf') format('opentype');
+    font-weight: bold;
+    font-style: normal;
+  }
+  
+  @font-face {
+    font-family: 'HK Grotesk';
+    src: url('/src/assets/fonts/hk-grotesk/HKGrotesk-Black.otf') format('opentype');
+    font-weight: 900;
+    font-style: normal;
+  }
+  
+
+
+.login-container {
+  position: absolute; /* Or relative, depending on desired placement */
+  right: 90px; /* Move to the right */
+  top: 49.65%; /* Center vertically */
+  transform: translateY(-50%); /* Center adjust */
+}
+
+
+  /* Animated Logo Styles */
+  .logo-container {
+    position: relative;
+    width: 200px;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: visible;
+  }
+  
+  .logo-svg {
+    width: 100%;
+    height: 100%;
+    overflow: visible;
+    filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.1));
+  }
+  
+  .logo-text {
+    font-family: 'HK Grotesk', sans-serif;
+    font-weight: 900;
+    font-size: 24px;
+    letter-spacing: 0.05em;
+    fill: currentColor;
+    filter: drop-shadow(0 0 2px rgba(255, 255, 255, 0.3));
+    dominant-baseline: middle;
+  }
+  
+  /* Particle Effects */
+  .logo-svg path {
+    vector-effect: non-scaling-stroke;
+    pointer-events: none;
+  }
+  
+  /* Main Navigation Layout */
+  .navbar {
+    font-family: 'HK Grotesk', sans-serif;
+    position: absolute;
+    top: 0;
+    width: 100%;
+    background: transparent;
+    color: #fff;
+    z-index: 10;
+    padding: 1.5rem 2rem;
+    display: grid;
+    grid-template-columns: 200px 1fr 200px;
+  }
+  
+  /* Logo Section */
+  .logo {
+    grid-column: 1;
+    padding-left: 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    font-weight: 900;
+    letter-spacing: 0.05em;
+  }
+  
+  /* Navigation Content */
+  .navbar-content {
+    grid-column: 2;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .menu-items {
+    display: flex;
+    gap: 2.5rem;
+  }
+  
+  /* Menu Item Styles */
+  .menu-item {
+    position: relative;
+    cursor: pointer;
+    font-weight: 500;
+  }
+  
+  .menu-item-content {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.5rem;
+    border-radius: 4px;
+    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  
+  .menu-icon {
+    opacity: 0.7;
+    transition: opacity 0.2s ease;
+  }
+  
+  .menu-item:hover .menu-icon {
+    opacity: 1;
+  }
+  
+  /* Mega Menu Styles */
+  .mega-menu {
+    position: absolute;
+    top: calc(100% + 1rem);
+    transform: translateX(-50%);
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    color: #333;
+    border-radius: 12px;
+    padding: 1rem;
+    min-width: 400px;
+    box-shadow: 
+      0 4px 6px -1px rgba(0, 0, 0, 0.1),
+      0 2px 4px -1px rgba(0, 0, 0, 0.06),
+      0 0 0 1px rgba(255, 255, 255, 0.1);
+    z-index: 1;
+  }
+  
+  .mega-menu::before {
+    content: '';
+    position: absolute;
+    top: -6px;
+    width: 12px;
+    height: 12px;
+    background: rgba(255, 255, 255, 0.95);
+    border-radius: 2px;
+    transform: rotate(45deg);
+    transition: left 0.2s ease;
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+  }
+  
+  /* Mega Menu Positioning */
+  .menu-item:nth-child(1) .mega-menu {
+    left: 0;
+    transform: translateX(0);
+  }
+  .menu-item:nth-child(1) .mega-menu::before {
+    left: 10%;
+  }
+  
+  .menu-item:nth-child(2) .mega-menu {
+    left: -25%;
+    transform: translateX(25%);
+  }
+  .menu-item:nth-child(2) .mega-menu::before {
+    left: 19.5%;
+  }
+  
+  .menu-item:nth-child(3) .mega-menu {
+    left: 0%;
+    transform: translateX(-50%);
+  }
+  .menu-item:nth-child(3) .mega-menu::before {
+    left: 13%;
+  }
+  
+  .menu-item:nth-child(4) .mega-menu {
+    right: -25%;
+    transform: translateX(-75%);
+  }
+  .menu-item:nth-child(4) .mega-menu::before {
+    left: 80%;
+  }
+  
+  .menu-item:nth-child(5) .mega-menu {
+    right: 0;
+    transform: translateX(-100%);
+  }
+  .menu-item:nth-child(5) .mega-menu::before {
+    left: 85%;
+  }
+  
+  /* Mega Menu Content */
+  .mega-menu-content {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    overflow: hidden;
+  }
+  
+  .mega-menu-option {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 0.75rem;
+    border-radius: 8px;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    background: transparent;
+  }
+  
+  .mega-menu-option:hover {
+    background-color: rgba(0, 0, 0, 0.05);
+    transform: translateX(4px);
+  }
+  
+  /* Image Styles */
+  .img-wrapper {
+    width: 60px;
+    height: 40px;
+    border-radius: 6px;
+    overflow: hidden;
+    flex-shrink: 0;
+    background-color: rgba(0, 0, 0, 0.05);
+  }
+  
+  .menu-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+  }
+  
+  .mega-menu-option:hover .menu-image {
+    transform: scale(1.1);
+  }
+  
+  /* Text Content */
+  .option-text {
+    flex: 1;
+  }
+  
+  .option-title {
+    font-weight: 600;
+    margin-bottom: 0.25rem;
+    color: #1a202c;
+  }
+  
+  .option-description {
+    font-size: 0.875rem;
+    color: #4a5568;
+  }
+  
+  /* Arrow Icon */
+  .option-arrow {
+    opacity: 0;
+    transform: translateX(-10px);
+    transition: all 0.2s ease;
+    color: #4a5568;
+  }
+  
+  .mega-menu-option:hover .option-arrow {
+    opacity: 1;
+    transform: translateX(0);
+  }
+  
+  /* Performance Optimizations */
+  .logo-container,
+  .logo-svg,
+  .logo-text,
+  .logo-svg path,
+  .logo-svg circle,
+  .menu-item,
+  .mega-menu,
+  .mega-menu-option {
+    will-change: transform, opacity;
+    transform-style: preserve-3d;
+    backface-visibility: hidden;
+    perspective: 1000px;
+  }
+  
+  /* Animation Performance */
+  @media screen and (prefers-reduced-motion: no-preference) {
+    .menu-item-content,
+    .mega-menu-option,
+    .option-arrow,
+    .menu-image,
+    .logo-svg path {
+      transition-duration: 0.2s;
+    }
+  }
+  
+  /* Enhanced Blur Effect Support */
+  @supports not (backdrop-filter: blur(10px)) {
+    .mega-menu,
+    .mega-menu::before {
+      background: rgba(255, 255, 255, 0.97);
+    }
+  }
+  
+  /* Animation and Layout Containment */
+  .mega-menu,
+  .mega-menu-option,
+  .logo-container {
+    contain: content;
+  }
+  
+  /* SVG Rendering Quality */
+  .logo-svg {
+    shape-rendering: geometricPrecision;
+    text-rendering: geometricPrecision;
+  }
+  
+  /* Additional Animation Smoothing */
+  .logo-container,
+  .mega-menu,
+  .mega-menu-option {
+    transform-style: preserve-3d;
+    backface-visibility: hidden;
+    perspective: 1000px;
+  }

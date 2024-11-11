@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   width="37.035641mm"
+   height="37.134808mm"
+   viewBox="0 0 37.035641 37.134808"
+   version="1.1"
+   id="svg1"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview1"
+     pagecolor="#ffffff"
+     bordercolor="#000000"
+     borderopacity="0.25"
+     inkscape:showpageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#d1d1d1"
+     inkscape:document-units="mm">
+    <inkscape:page
+       x="0"
+       y="0"
+       width="37.035641"
+       height="37.134808"
+       id="page2"
+       margin="0"
+       bleed="0" />
+  </sodipodi:namedview>
+  <defs
+     id="defs1" />
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1"
+     transform="translate(-65.634762,-89.037105)">
+    <path
+       d="M 102.42032,90.459498 89.720321,111.0335 q -0.254,0.4572 -0.4572,1.1176 -0.2032,0.6604 -0.2032,1.1684 v 11.6332 q 0,0.508 -0.3556,0.8636 -0.3556,0.3556 -0.8636,0.3556 h -7.6708 q -0.508,0 -0.8636,-0.3556 -0.3556,-0.3556 -0.3556,-0.8636 v -11.5824 q 0,-0.508 -0.2032,-1.1684 -0.1524,-0.7112 -0.4064,-1.1176 -3.048,-5.2324 -6.2484,-10.2616 -3.1496,-5.029202 -6.2992,-10.363202 -0.254,-0.4572 -0.1016,-0.9144 0.1524,-0.508 0.6604,-0.508 h 9.0424 q 0.508,0 1.016,0.3048 0.5588,0.3048 0.8128,0.762 l 6.2484,10.871202 q 0.254,0.4064 0.6096,0.4064 0.3556,0 0.6096,-0.4064 l 6.1976,-10.871202 q 0.254,-0.4572 0.762,-0.762 0.5588,-0.3048 1.0668,-0.3048 h 9.143999 q 0.508,0 0.7112,0.3556 0.254,0.3556 -0.1524,1.0668 z"
+       id="text1"
+       style="font-size:50.8px;font-family:Heavitas;-inkscape-font-specification:Heavitas;stroke-width:0.264583"
+       aria-label="Y"
+       inkscape:export-filename="Y.svg"
+       inkscape:export-xdpi="96"
+       inkscape:export-ydpi="96" />
+  </g>
+</svg>

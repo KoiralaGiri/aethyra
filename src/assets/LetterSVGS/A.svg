@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   width="40.325031mm"
+   height="37.134796mm"
+   viewBox="0 0 40.325031 37.134796"
+   version="1.1"
+   id="svg1"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview1"
+     pagecolor="#ffffff"
+     bordercolor="#000000"
+     borderopacity="0.25"
+     inkscape:showpageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#d1d1d1"
+     inkscape:document-units="mm">
+    <inkscape:page
+       x="0"
+       y="1.7928863e-21"
+       width="40.325031"
+       height="37.134796"
+       id="page2"
+       margin="0"
+       bleed="0" />
+  </sodipodi:namedview>
+  <defs
+     id="defs1" />
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1"
+     transform="translate(-82.876141,-114.58231)">
+    <path
+       d="m 97.770703,115.6999 q 0.2032,-0.4572 0.6604,-0.762 0.508,-0.3556 1.0668,-0.3556 h 7.111997 q 0.508,0 0.9652,0.3556 0.508,0.3048 0.7112,0.762 l 14.8336,34.544 q 0.2032,0.4572 -0.1016,0.9652 -0.254,0.508 -1.0668,0.508 h -8.6868 q -0.5588,0 -1.0668,-0.3048 -0.4572,-0.3556 -0.7112,-0.8128 l -1.3716,-3.048 q -0.254,-0.4572 -0.762,-0.762 -0.4572,-0.3556 -0.9652,-0.3556 H 97.669103 q -0.5588,0 -1.0668,0.3556 -0.4572,0.3048 -0.6604,0.762 l -1.4224,3.048 q -0.2032,0.4572 -0.7112,0.8128 -0.4572,0.3048 -0.9652,0.3048 h -8.7376 q -0.254,0 -0.508,-0.1016 -0.3048,-0.1016 -0.4572,-0.3048 -0.2032,-0.2032 -0.254,-0.508 -0.0508,-0.3048 0.1524,-0.7112 z m 2.997197,22.098 h 4.5212 q 0.508,0 0.7112,-0.3048 0.254,-0.3556 0,-0.8128 -0.508,-1.27 -1.2192,-2.9464 -0.7112,-1.7272 -1.3208,-3.2004 -0.2032,-0.4572 -0.4572,-0.4572 -0.254,0 -0.4572,0.4572 l -2.54,6.1468 q -0.203197,0.4572 0,0.8128 0.2032,0.3048 0.762,0.3048 z"
+       id="text1"
+       style="font-size:50.8px;font-family:Heavitas;-inkscape-font-specification:Heavitas;stroke-width:0.264583"
+       aria-label="A" />
+  </g>
+</svg>

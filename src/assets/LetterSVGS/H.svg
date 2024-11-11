@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   width="32.9692mm"
+   height="37.185608mm"
+   viewBox="0 0 32.9692 37.185608"
+   version="1.1"
+   id="svg1"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview1"
+     pagecolor="#ffffff"
+     bordercolor="#000000"
+     borderopacity="0.25"
+     inkscape:showpageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#d1d1d1"
+     inkscape:document-units="mm">
+    <inkscape:page
+       x="0"
+       y="-2.8407683e-13"
+       width="32.9692"
+       height="37.185612"
+       id="page2"
+       margin="0"
+       bleed="0" />
+  </sodipodi:namedview>
+  <defs
+     id="defs1" />
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1"
+     transform="translate(-82.337167,-82.156481)">
+    <path
+       d="m 115.30637,83.375687 v 34.747203 q 0,0.508 -0.3556,0.8636 -0.3556,0.3556 -0.8636,0.3556 h -7.62 q -0.5588,0 -0.9144,-0.3556 -0.3048,-0.3556 -0.3048,-0.8636 v -10.8712 q 0,-0.508 -0.3556,-0.8636 -0.3556,-0.3556 -0.8636,-0.3556 H 93.563966 q -0.5588,0 -0.9144,0.3556 -0.3048,0.3556 -0.3048,0.8636 v 10.8712 q 0,0.508 -0.3556,0.8636 -0.3556,0.3556 -0.8636,0.3556 h -7.5692 q -0.5588,0 -0.9144,-0.3556 -0.3048,-0.3556 -0.3048,-0.8636 V 83.375687 q 0,-0.508 0.3048,-0.8636 0.3556,-0.3556 0.9144,-0.3556 h 7.5692 q 0.508,0 0.8636,0.3556 0.3556,0.3556 0.3556,0.8636 v 12.0396 q 0,0.508 0.3048,0.8636 0.3556,0.3556 0.9144,0.3556 h 10.464804 q 0.508,0 0.8636,-0.3556 0.3556,-0.3556 0.3556,-0.8636 v -12.0396 q 0,-0.508 0.3048,-0.8636 0.3556,-0.3556 0.9144,-0.3556 h 7.62 q 0.508,0 0.8636,0.3556 0.3556,0.3556 0.3556,0.8636 z"
+       id="text1"
+       style="font-size:50.8px;font-family:Heavitas;-inkscape-font-specification:Heavitas;stroke-width:0.264583"
+       aria-label="H"
+       inkscape:export-filename="H.svg"
+       inkscape:export-xdpi="96"
+       inkscape:export-ydpi="96" />
+  </g>
+</svg>
