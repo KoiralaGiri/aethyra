@@ -5,6 +5,7 @@ import { Button } from './ui/Button';
 import AnimatedLogo from './AnimatedLogo';
 import './MegaMenuNavbar.css';
 
+
 const LoginButton = () => {
   return (
     <motion.div

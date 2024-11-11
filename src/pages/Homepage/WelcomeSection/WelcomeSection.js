@@ -1,5 +1,3 @@
-// src/pages/Homepage/WelcomeSection/WelcomeSection.js
-
 import React, { useState, useEffect, useRef } from 'react';
 import Typewriter from 'typewriter-effect';
 import styled from 'styled-components';
@@ -13,12 +11,46 @@ const WelcomeSection = () => {
   const [showDevelopment, setShowDevelopment] = useState(false);
   const [showWelcome, setShowWelcome] = useState(false);
   const [showDescription, setShowDescription] = useState(false);
+  const [globeVisible, setGlobeVisible] = useState(false);
+  const [backgroundBlur, setBackgroundBlur] = useState(0);
+  const [backgroundOpacity, setBackgroundOpacity] = useState(0);
+  const globeRef = useRef(null);
   const descriptionRef = useRef(null);
 
   useEffect(() => {
-    setTimeout(() => setShowDevelopment(true), 300);    
-    setTimeout(() => setShowWelcome(true), 1500);       
-    setTimeout(() => setShowDescription(true), 2500);   
+    const sequence = async () => {
+      // Start with black screen
+      await new Promise(resolve => setTimeout(resolve, 300));
+      
+      // Start globe scale animation
+      setGlobeVisible(true);
+      
+      // Start background blur transition
+      const blurSteps = 20;
+      for (let i = 0; i <= blurSteps; i++) {
+        await new Promise(resolve => setTimeout(resolve, 30));
+        setBackgroundBlur(i / blurSteps);
+      }
+      
+      // Fade in background
+      const opacitySteps = 20;
+      for (let i = 0; i <= opacitySteps; i++) {
+        await new Promise(resolve => setTimeout(resolve, 30));
+        setBackgroundOpacity(i / opacitySteps);
+      }
+
+      // Original text animation sequence
+      await new Promise(resolve => setTimeout(resolve, 300));
+      setShowDevelopment(true);
+      
+      await new Promise(resolve => setTimeout(resolve, 1500));
+      setShowWelcome(true);
+      
+      await new Promise(resolve => setTimeout(resolve, 300));
+      setShowDescription(true);
+    };
+
+    sequence();
   }, []);
 
   useEffect(() => {
@@ -34,28 +66,30 @@ const WelcomeSection = () => {
   }, []);
 
   useEffect(() => {
-    const globeEffect = window.VANTA.GLOBE({
-      el: "#globe-background",
-      mouseControls: true,
-      touchControls: true,
-      gyroControls: false,
-      minHeight: 200.00,
-      minWidth: 200.00,
-      color: 0xff6f61,
-      color2: 0xffffff,
-      size: 1.2,
-      backgroundColor: 0x1a1147,
-      points: 15,
-      maxDistance: 20,
-      spacing: 15,
-      showDots: true,
-      scale: 1,
-    });
+    if (globeVisible && globeRef.current) {
+      const globeEffect = window.VANTA.GLOBE({
+        el: "#globe-background",
+        mouseControls: true,
+        touchControls: true,
+        gyroControls: false,
+        minHeight: 200.00,
+        minWidth: 200.00,
+        color: 0xff6f61,
+        color2: 0xffffff,
+        size: 1.2,
+        backgroundColor: 0x1a1147,
+        points: 15,
+        maxDistance: 20,
+        spacing: 15,
+        showDots: true,
+        scale: 1,
+      });
 
-    return () => {
-      if (globeEffect) globeEffect.destroy();
-    };
-  }, []);
+      return () => {
+        if (globeEffect) globeEffect.destroy();
+      };
+    }
+  }, [globeVisible]);
 
   const containerVariants = {
     hidden: { 
@@ -108,14 +142,50 @@ const WelcomeSection = () => {
 
   const words = [
     "We design solutions ",
-    "that aren't just functional—",
+    "that aren't just functional — ",
     "they're unforgettable."
   ];
 
   return (
     <SectionWrapper>
-      <GlobeBackground id="globe-background" scrollProgress={scrollProgress} />
-      <GradientOverlay scrollProgress={scrollProgress} />
+      {/* Background blur and fade container */}
+      <motion.div 
+        className="fixed inset-0 bg-black"
+        style={{
+          backdropFilter: `blur(${backgroundBlur * 20}px)`,
+          WebkitBackdropFilter: `blur(${backgroundBlur * 20}px)`,
+          opacity: backgroundOpacity,
+          transition: 'backdrop-filter 0.5s ease-out, opacity 0.5s ease-out'
+        }}
+      />
+
+      {/* Globe container */}
+      <motion.div
+        initial={{ scale: 0 }}
+        animate={{ 
+          scale: globeVisible ? 1 : 0
+        }}
+        transition={{ 
+          type: "spring",
+          stiffness: 80,
+          damping: 20,
+          duration: 1.2
+        }}
+        className="relative"
+        style={{
+          position: 'fixed',
+          top: 0,
+          left: 0,
+          width: '100%',
+          height: '100vh'
+        }}
+      >
+        <GlobeBackground 
+          ref={globeRef}
+          id="globe-background" 
+          scrollProgress={scrollProgress}
+        />
+      </motion.div>
 
       <ContentWrapper>
         <CenteredContent>
@@ -199,7 +269,7 @@ const WelcomeSection = () => {
                 <Typewriter
                   onInit={(typewriter) => {
                     typewriter
-                      .typeString('Welcome to, Aethyra')
+                      .typeString('Welcome to Aethyra')
                       .start();
                   }}
                   options={{
@@ -273,40 +343,16 @@ const WelcomeSection = () => {
   );
 };
 
-export default WelcomeSection;
-
 const SectionWrapper = styled.div`
   position: relative;
+  background: black;
+  min-height: 100vh;
 `;
 
 const GlobeBackground = styled.div`
-  position: fixed;
-  top: 0;
-  left: 0;
   width: 100%;
-  height: 100vh;
-  z-index: 0;
+  height: 100%;
   opacity: ${({ scrollProgress }) => Math.max(0, 1 - scrollProgress * 0.8)};
-  transform: scale(${({ scrollProgress }) => 1 + scrollProgress * 0.05});
-`;
-
-const GradientOverlay = styled.div`
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100vh;
-  z-index: 0;
-  pointer-events: none;
-  background: linear-gradient(
-    to bottom,
-    transparent 0%,
-    rgba(255, 255, 255, ${({ scrollProgress }) => scrollProgress * 0.3}) 45%,
-    rgba(255, 255, 255, ${({ scrollProgress }) => scrollProgress * 0.6}) 65%,
-    rgba(255, 255, 255, ${({ scrollProgress }) => scrollProgress * 0.9}) 85%,
-    rgba(255, 255, 255, ${({ scrollProgress }) => scrollProgress}) 100%
-  );
-  opacity: ${({ scrollProgress }) => scrollProgress};
 `;
 
 const ContentWrapper = styled.div`
@@ -383,3 +429,5 @@ const NextSection = styled.div`
   align-items: center;
   justify-content: center;
 `;
+
+export default WelcomeSection;
