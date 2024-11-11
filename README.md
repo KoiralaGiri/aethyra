@@ -78,19 +78,144 @@ These packages are used during the development process and not included in the p
 
 ## File Structure
 
-```
-aethyra-website/
-├── src/
-│   ├── animations/              # Animations used across the site
-│   ├── components/              # Reusable components like Navbar and Buttons
-│   ├── pages/                   # Page components like Homepage and About
-│   ├── styles/                  # CSS and Tailwind configurations
-│   ├── App.js                   # Main application entry point
-│   └── index.js                 # Entry file for React rendering
-├── tailwind.config.js           # TailwindCSS configuration file
-├── package.json                 # Project metadata and dependencies
-└── README.md                    # Project documentation
-```
+# Aethyra Project Structure Explanation
+
+## Root Directory Files
+- `App.js` - Main React application component and routing setup
+- `App.test.js` - Test file for the App component
+- `index.js` - Entry point of the React application
+- `logo.svg` - Vector version of the Aethyra logo
+- `reportWebVitals.js` - Performance measurement utilities
+- `setupTests.js` - Configuration for test environment
+- `.gitignore` - Specifies which files Git should ignore
+- `components.json` - Configuration for shadcn/ui components
+- `package-lock.json` - Exact dependency tree information
+- `package.json` - Project metadata and dependencies
+- `postcss.config.js` - PostCSS configuration for CSS processing
+- `README.md` - Project documentation
+- `tailwind.config.js` - TailwindCSS configuration
+- `tsconfig.json` - TypeScript configuration
+
+## `/app` Directory
+Core application setup for Next.js/React application
+- `/globals.css` - Global CSS styles
+- `/components` - Shared components across the application
+
+## `/components` Directory
+Contains reusable UI components
+- `/lib`
+  - `utils.ts` - Utility functions and helpers
+- `/ui` - Generic UI components using shadcn/ui
+
+## `/public` Directory
+Static assets served directly by the web server
+- `favicon.ico` - Website favicon
+- `logo192.png` - Small logo for PWA
+- `logo512.png` - Large logo for PWA
+- `manifest.json` - PWA configuration
+- `robots.txt` - Search engine crawling instructions
+
+## `/src` Directory
+Main source code of the application
+
+### `/ani-icons`
+SVG and animation assets
+- `blob-scene-haikei.svg` - Blob background animation
+- `layered-waves-haikei.svg` - Wave animation layers
+- `LottieAnimation.json` - Lottie animation configuration
+
+### `/animations`
+Animation-related components and assets
+- `/logo-animation`
+  - `AnimatedLogoSequence.js` - Main logo animation sequence
+  - `LoadingAnimation.js` - Loading state animations
+  - `LogoAnimationAethyra.js` - Aethyra-specific logo animations
+  - `ScreenWipe.js` - Screen transition effects
+  - `IconAnimation.js` - Icon animation utilities
+- `/assets`
+  - `/fonts` - Custom fonts used in animations
+  - `/LetterSVGS` - SVG assets for letter animations
+
+### `/components`
+Custom UI components
+- `/ui`
+  - `AnimatedLogo.css` - Styles for animated logo
+  - `AnimatedLogo.js` - Animated logo component
+- `MegaMenuNavbar.css` - Styles for navigation menu
+- `MegaMenuNavbar.js` - Navigation menu component
+
+### `/lib`
+Utility functions and shared logic
+- `utils.ts` - TypeScript utilities
+
+### `/pages`
+Page components and sections
+- `/About-Us` - About page components
+- `/Coming-Soon` - Coming soon page components
+- `/Homepage`
+  - `/WelcomeSection`
+    - `FadeText.tsx` - Text fade animation component
+    - `WelcomeSection.css` - Welcome section styles
+    - `WelcomeSection.js` - Main welcome section component
+    - `WelcomeSectionBG.tsx` - Background effects component
+    - `WordPullUp.tsx` - Word animation component
+- `/Portfolio` - Portfolio page components
+- `/Services` - Services page components
+- `/Sponsors` - Sponsors page components
+
+### `/styles`
+Global styles and style utilities
+
+### `/vendors`
+Third-party integrations and vendor-specific code
+
+## Key Features in Each Component
+
+### Animation Components
+- `AnimatedLogoSequence.js`: Controls the timing and sequence of logo animations
+- `LoadingAnimation.js`: Handles loading states with smooth animations
+- `ScreenWipe.js`: Creates smooth transitions between sections
+
+### UI Components
+- `MegaMenuNavbar`: Advanced navigation menu with dropdowns and animations
+- `AnimatedLogo`: Interactive logo component with hover effects
+
+### Page Components
+- `WelcomeSection`: Dynamic welcome area with text animations and background effects
+- `FadeText`: Handles text fade-in/fade-out animations
+- `WordPullUp`: Creates word-by-word animation effects
+
+### Utility Files
+- `utils.ts`: Contains shared functions for:
+  - Animation helpers
+  - Style calculations
+  - Component utilities
+  - Type definitions
+
+### Style Files
+- `globals.css`: Contains:
+  - Base styles
+  - CSS variables
+  - Media queries
+  - Animation keyframes
+
+### Configuration Files
+- `tailwind.config.js`: Configures:
+  - Custom colors
+  - Breakpoints
+  - Animation classes
+  - Typography
+- `tsconfig.json`: Sets up:
+  - TypeScript compilation options
+  - Module resolution
+  - Build paths
+
+This structure follows a modular and component-based architecture, making it easy to:
+1. Locate specific functionality
+2. Maintain separation of concerns
+3. Scale the application with new features
+4. Reuse components across different sections
+5. Manage animations and styles effectively
 
 ## Configuration
 
